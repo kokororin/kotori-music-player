@@ -13,24 +13,20 @@ var playlist = null;
 
 
 $.ajax({
-    url: 'http://kotori.sinaapp.com/xiami.json',
+    url: 'http://kotori.sinaapp.com/xiami/collect/15792991',
     type: 'get',
     dataType: 'json',
-    data: {
-        type: 'collect',
-        id: '33663638'
-    },
     async: false,
     success: function(data) {
         playlist = data;
     },
-    error:function(){
-    	showNotification({
-                    type: "basic",
-                    title: 'Message',
-                    message: 'Kotori API Error',
-                    iconUrl:'images/icon-128.png'
-                });
+    error: function() {
+        showNotification({
+            type: "basic",
+            title: 'Message',
+            message: 'Kotori API Error',
+            iconUrl: 'images/icon-128.png'
+        });
     }
 });
 
@@ -51,13 +47,12 @@ var loadMusic = function(i) {
         type: "get",
         async: false,
         dataType: "json",
-        url: 'https://kotori.sinaapp.com/xiami.json?id=' + item.id,
+        url: 'https://kotori.sinaapp.com/xiami/single/' + item.id,
         success: function(data) {
 
             if (data.url != null) {
                 //console.log(data);
                 src = data.url;
-
                 //加载各种东西
                 audio.setAttribute("src", src);
                 cover = data.img;
@@ -66,23 +61,23 @@ var loadMusic = function(i) {
 
                 if (isPlaying) {
                     play();
-                }
 
-                showNotification({
-                    type: "basic",
-                    title: name,
-                    message: artist,
-                    iconUrl: cover
-                });
+                    showNotification({
+                        type: "basic",
+                        title: name,
+                        message: artist,
+                        iconUrl: cover
+                    });
+                }
 
                 console.log('Song Title: ' + data.name + ' Song Artist: ' + data.artist_name);
             } else {
-    
+
                 showNotification({
                     type: "basic",
                     title: 'Message',
                     message: '歌曲获取失败，请重试。',
-                    iconUrl:'images/icon-128.png'
+                    iconUrl: 'images/icon-128.png'
                 });
 
             }

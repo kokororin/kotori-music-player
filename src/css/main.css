@@ -38,22 +38,14 @@ a {
     background-color: transparent;
 }
 
-.kotori-music-player .album-cover .highlight {
-    background: transparent url(../images/album-cover-highlight.png) no-repeat 0 0 scroll;
-    opacity: 1;
-}
 
-.kotori-music-player .album-cover:hover .highlight {
-    opacity: 1;
-}
-
-.kotori-music-player .album-cover, .kotori-music-player .album-cover .img, .kotori-music-player .album-cover .highlight {
+.kotori-music-player .album-cover, .kotori-music-player .album-cover .img{
     display: block;
     height: 125px;
     width: 125px;
 }
 
-.kotori-music-player .album-cover img, .kotori-music-player .album-cover .img, .kotori-music-player .album-cover .highlight {
+.kotori-music-player .album-cover img, .kotori-music-player .album-cover .img{
     position: absolute;
     top: 0;
     left: 0;
@@ -76,8 +68,7 @@ a {
 }
 
 .kotori-music-player .player .title {
-    color: #D2C8C7;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, .8);
+    color: #000000;
     font-family: 'Lato Bold', arial, sans-serif;
     font-weight: bold;
     font-size: 14px;
@@ -93,14 +84,14 @@ a {
 
 .kotori-music-player .artist-outer {
     color: #727272;
-    font-family: 'Lato Italic', arial, sans-serif;
-    font-style: italic;
+    font-family: 'Lato', arial, sans-serif;
 }
 
 .kotori-music-player .artist {
-    color: #999;
+    color: #666;
     font-family: 'Lato', arial, sans-serif;
     margin-left: 4px;
+    font-size: 11px;
 }
 
 
@@ -113,7 +104,6 @@ a {
     border-radius: 6px;
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
-    background: transparent url(../images/player-bg.png) repeat 0 0 scroll;
     float: left;
     margin: 12px 0 0 30px;
 }
@@ -243,9 +233,6 @@ a {
     background: none;
 }
 
-.kotori-music-player .show-more-button li:last-child {
-    background: transparent url(../images/tracklist-item-bg.png) repeat-x bottom left scroll;
-}
 
 .kotori-music-player .tracklist .title {
     width: 164px;
@@ -265,7 +252,7 @@ a {
 
 /** Transitions **/
 
-.kotori-music-player .more, .kotori-music-player .album-cover .highlight, .kotori-music-player .tracklist li, .kotori-music-player .buy {
+.kotori-music-player .tracklist li{
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;

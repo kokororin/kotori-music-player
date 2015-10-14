@@ -6,6 +6,7 @@
 
 # 更新日志
 * 2015/10/13  1.0
+* 2015/10/14  1.1
 
 # 协议
 [MIT](http://www.opensource.org/licenses/mit-license.php)

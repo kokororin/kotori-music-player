@@ -22,7 +22,15 @@ $(document).ready(function() {
         init();
     });
 
+    $('.progress').click(function(event) {
+        var distance = event.pageX - $(this).offset().left;
+        var audio = bg.audio;
+        audio.currentTime = distance * (audio.duration / 135);
+        updateProgress();
+    });
+
     var init = function() {
+        updateProgress();
         $('.album-cover .img img').attr({
             'src': bg.cover,
             'alt': bg.artist
