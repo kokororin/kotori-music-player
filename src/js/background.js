@@ -10,10 +10,12 @@ var name = '';
 var artist = '';
 var cover = '';
 var playlist = null;
+var lyric = null;
+var currentLyric = '';
 
 
 $.ajax({
-    url: 'http://kotori.sinaapp.com/xiami/collect/15792991',
+    url: 'http://kotori.sinaapp.com/xiami/collect/117450176',
     type: 'get',
     dataType: 'json',
     async: false,
@@ -58,16 +60,18 @@ var loadMusic = function(i) {
                 cover = data.img;
                 artist = data.artist_name;
                 name = data.name;
+                lyric = data.lyric;
 
                 if (isPlaying) {
                     play();
-
+                   /*
                     showNotification({
                         type: "basic",
                         title: name,
                         message: artist,
                         iconUrl: cover
                     });
+                   */
                 }
 
                 console.log('Song Title: ' + data.name + ' Song Artist: ' + data.artist_name);
@@ -120,6 +124,27 @@ var updateProgress = function() {
         autoChange();
     }
     ratio = audio.currentTime / audio.duration * 100;
+
+}
+
+var showLyric = function() {
+    var time = Math.round(audio.currentTime);
+    var currentLyric = getLyric(time);
+    if (currentLyric != '') {
+        console.log(currentLyric);
+
+        showCoexistNotification({
+            type: "basic",
+            title: 'Kotori Music Player',
+            message: currentLyric,
+            iconUrl: cover
+        });
+
+    }
+}
+
+var getLyric = function(second) {
+    return typeof(lyric['time' + second]) == 'undefined' ? '' : lyric['time' + second];
 }
 
 var continous = function() {
@@ -130,8 +155,9 @@ var continous = function() {
 
 var play = function() {
     audio.play();
-    timeout = setInterval(updateProgress, 1000);
+    timeout = setInterval(updateProgress, 500);
     setInterval(continous, 500);
+    setInterval(showLyric, 1000);
     isPlaying = true;
 }
 

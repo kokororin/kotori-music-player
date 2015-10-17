@@ -51,6 +51,6 @@ $(document).ready(function() {
     }
 
     init();
-    setInterval(updateProgress, 1000);
+    setInterval(updateProgress, 500);
 
 });

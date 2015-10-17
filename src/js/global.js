@@ -8,6 +8,15 @@ function showNotification(opt) {
     }, 5000);
 }
 
+function showCoexistNotification(opt) {
+    var notification = chrome.notifications.create(status.toString(), opt, function(notifyId) {
+        return notifyId;
+    });
+    setTimeout(function() {
+        chrome.notifications.clear(status.toString(), function() {});
+    }, 2000);
+}
+
 var manifest = chrome.runtime.getManifest();
 var previousVersion = localStorage.getItem("version");
 if (previousVersion == "" || previousVersion != manifest.version) {
