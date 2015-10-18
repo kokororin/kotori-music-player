@@ -99,6 +99,7 @@ a {
 /** Player **/
 
 .kotori-music-player .player-controls {
+    margin-top: 10px;
     width: 215px;
     height: 30px;
     border-radius: 6px;

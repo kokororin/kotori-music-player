@@ -44,10 +44,20 @@ $(document).ready(function() {
         }
     }
 
+
     var updateProgress = function() {
         $('.progress-wrapper .elapsed').css({
             'width': bg.ratio + '%'
         });
+    }
+
+    bg.audio.ontimeupdate = function(event) {     
+        for (var i = 0, l = bg.lyric.length; i < l; i++) {
+            if (bg.audio.currentTime > bg.lyric[i][0]) {
+                //console.log(bg.lyric[i][1]);
+                $('.track-info .lyric-container').html(bg.lyric[i][1]);
+            };
+        }       
     }
 
     init();

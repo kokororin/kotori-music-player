@@ -1,21 +1,24 @@
-function showNotification(opt) {
+var getCollectID = function() {
+    return localStorage['collectID'] ? localStorage['collectID'] : '117450176';
+}
+
+var setCollectID = function(collectID) {
+    localStorage['collectID'] = collectID;
+}
+
+function showNotification(opt, time) {
+    if (typeof(time) == 'undefined') {
+        time = 5000;
+    }
     chrome.notifications.clear('notifyId', function() {});
     var notification = chrome.notifications.create('notifyId', opt, function(notifyId) {
         return notifyId;
     });
     setTimeout(function() {
         chrome.notifications.clear('notifyId', function() {});
-    }, 5000);
+    }, time);
 }
 
-function showCoexistNotification(opt) {
-    var notification = chrome.notifications.create(status.toString(), opt, function(notifyId) {
-        return notifyId;
-    });
-    setTimeout(function() {
-        chrome.notifications.clear(status.toString(), function() {});
-    }, 2000);
-}
 
 var manifest = chrome.runtime.getManifest();
 var previousVersion = localStorage.getItem("version");
